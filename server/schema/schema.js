@@ -6,7 +6,12 @@ inside our graph
 const graphql = require('graphql');
 const _ = require('lodash');
 
-const { GraphQLObjectType , GraphQLString , GraphQLSchema} = graphql;
+const {
+    GraphQLObjectType ,
+    GraphQLString ,
+    GraphQLSchema,
+    GraphQLID
+} = graphql;
 
 //Create dummy data
 let books = [
@@ -17,7 +22,7 @@ let books = [
 const BookType = new GraphQLObjectType({
    name : 'Book',
    fields : () => ({
-       id: { type : GraphQLString},
+       id: { type : GraphQLID},
        name : { type : GraphQLString},
        genre : {type : GraphQLString}
    })
@@ -28,9 +33,10 @@ const RootQuery = new GraphQLObjectType({
     fields : {
         book: {
             type : BookType,
-            args : { id : { type : GraphQLString}},
+            args : { id : { type : GraphQLID}},
             resolve ( parent , args){
                 // Code to get data from db / other source
+
                 return _.find(books, {id : args.id});
             }
         }
