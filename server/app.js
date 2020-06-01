@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const graphlHTTP = require('express-graphql');
 const schema = require('./schema/schema');
+
 const app = express();
 
 app.use('/graphql' , graphlHTTP({

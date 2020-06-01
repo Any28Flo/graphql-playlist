@@ -4,9 +4,16 @@ inside our graph
 * 2.Define relationships between types
 * 3.Define root queries*/
 const graphql = require('graphql');
+const _ = require('lodash');
 
 const { GraphQLObjectType , GraphQLString , GraphQLSchema} = graphql;
 
+//Create dummy data
+let books = [
+    { name : 'Name of the Wind' , genre : 'Fantasy' , id : '1'},
+    { name : 'The Final Empire' , genre : 'Fantasy' , id : '2'},
+    { name : 'The Long Earth' , genre : 'Sci-Fi' , id : '3'}
+]
 const BookType = new GraphQLObjectType({
    name : 'Book',
    fields : () => ({
@@ -24,7 +31,7 @@ const RootQuery = new GraphQLObjectType({
             args : { id : { type : GraphQLString}},
             resolve ( parent , args){
                 // Code to get data from db / other source
-
+                return _.find(books, {id : args.id});
             }
         }
     }
