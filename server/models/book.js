@@ -18,7 +18,7 @@ const bookSchema = new Schema(
         }
     },
     {
-        timestamp: { createdAt: "created_at", updatedAt : "updated_at"}
+        timestamps: { createdAt : "created_at" , updatedAt : "updated_at"}
     }
 )
 module.exports = mongoose.model('Book', bookSchema);
