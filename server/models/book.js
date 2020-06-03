@@ -16,6 +16,9 @@ const bookSchema = new Schema(
         authorId:{
             type: String
         }
+    },
+    {
+        timestamp: { createdAt: "created_at", updatedAt : "updated_at"}
     }
 )
 module.exports = mongoose.model('Book', bookSchema);
