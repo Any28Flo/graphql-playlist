@@ -1,6 +1,8 @@
 import React from "react";
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {DropdownButton, Dropdown} from "react-bootstrap";
 
 const GET_BOOKS = gql`
     {
@@ -21,16 +23,17 @@ const BookList = () =>{
     return(
         <div className="bookList">
             <h1>BookList</h1>
-            <ul>
+            <DropdownButton  id="books-dropdown" title="Books">
                 {
                     data.books.map( (book, id) =>{
                         const {name} = book;
                         return(
-                         <li key= {id}>{name}</li>
+                            <Dropdown.Item key= {id}>{name}</Dropdown.Item>
                         )
                     })
                 }
-            </ul>
+            </DropdownButton>
+
         </div>
     )
 }
