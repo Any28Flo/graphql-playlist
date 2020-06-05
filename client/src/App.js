@@ -1,7 +1,11 @@
 import React from 'react';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.scss';
 
+import {Container, Row, Col} from "react-bootstrap";
+//Components
 import BookList from './components/BookList'
 
 //apollo client setup
