@@ -6,7 +6,7 @@ import BookList from './components/BookList'
 
 //apollo client setup
 const client = new ApolloClient({
-    uri: "http://localhost:4000/graphql"
+    uri: process.env.REACT_APP_URL_API
 });
 
 export default App;
