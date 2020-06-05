@@ -7,7 +7,7 @@ import './App.scss';
 import {Container, Row, Col} from "react-bootstrap";
 //Components
 import BookList from './components/BookList'
-
+import AuthorList from "./components/AuthorList";
 //apollo client setup
 const client = new ApolloClient({
     uri: process.env.REACT_APP_URL_API
@@ -27,6 +27,11 @@ const App = () =>{
                     <Row>
                         <Col>
                             <BookList/>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <AuthorList/>
                         </Col>
                     </Row>
                 </Container>

@@ -22,7 +22,6 @@ const BookList = () =>{
 
     return(
         <div className="bookList">
-            <h1>BookList</h1>
             <DropdownButton  id="books-dropdown" title="Books">
                 {
                     data.books.map( (book, id) =>{
