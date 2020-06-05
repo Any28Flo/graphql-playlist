@@ -17,7 +17,7 @@ const GET_BOOKS = gql`
 const BookList = () =>{
     const { loading, error, data } = useQuery(GET_BOOKS);
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <p data-testid="loading">Loading...</p>;
     if (error) return <p>Error :(</p>;
 
     return(
