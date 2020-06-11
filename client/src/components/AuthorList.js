@@ -1,7 +1,7 @@
-import React from "react";
+import React, {useState} from "react";
 import {useQuery} from "@apollo/react-hooks";
 import {gql} from "apollo-boost";
-import {DropdownButton,Dropdown} from "react-bootstrap";
+import {Form,Dropdown} from "react-bootstrap";
 
 const GET_AUTHORS= gql`
     {
@@ -12,24 +12,33 @@ const GET_AUTHORS= gql`
     }
 `;
 const AuthorList = () =>{
+    const [state , setState] = useState("");
+
     const {loading, error, data} = useQuery(GET_AUTHORS);
-    if(loading) return <p>Loading...</p>
+    if(loading) return <option>Loading Authors....</option>
     if(error) return <p>Error x.X</p>
     return(
         <div className="authorList">
-            <DropdownButton id="author-dropdown" title="Authors List">
+            <Form.Control
+                as="select"
+                id="inlineFormCustomSelect"
+                custom
+                onChange={e => setState(e.target.value)}
+            >
                 {
                     data.authors.map((author,id) =>{
                         const {name} = author;
                         return(
-                            <Dropdown.Item key={id}>
+                            <option key={id} value={name}>
                                 {name}
-                            </Dropdown.Item>
+                            </option>
                         )
                     })
                 }
-            </DropdownButton>
+            </Form.Control>
         </div>
-    )
+    );
+
 };
+
 export default AuthorList;

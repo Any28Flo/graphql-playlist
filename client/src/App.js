@@ -8,6 +8,7 @@ import {Container, Row, Col} from "react-bootstrap";
 //Components
 import BookList from './components/BookList'
 import AuthorList from "./components/AuthorList";
+import AddBook from "./components/AddBook";
 //apollo client setup
 const client = new ApolloClient({
     uri: process.env.REACT_APP_URL_API
@@ -18,22 +19,14 @@ const App = () =>{
         <ApolloProvider client={client}>
             <div className="main">
                 <Container>
-                    <Row>
-                        <Col>
-                            <h2>Bienvenido a mi app libreria </h2>
 
-                        </Col>
-                    </Row>
                     <Row>
                         <Col>
-                            <BookList/>
+                            <AddBook/>
                         </Col>
                     </Row>
-                    <Row>
-                        <Col>
-                            <AuthorList/>
-                        </Col>
-                    </Row>
+
+
                 </Container>
 
             </div>
