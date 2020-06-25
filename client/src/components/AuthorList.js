@@ -2,16 +2,8 @@ import React, {useState} from "react";
 import {useQuery} from "@apollo/react-hooks";
 import {gql} from "apollo-boost";
 import {Form,Dropdown} from "react-bootstrap";
+import { GET_AUTHORS} from "../queries/queries";
 
-const GET_AUTHORS= gql`
-    {
-        authors{
-            id,
-            name,
-            age
-        }
-    }
-`;
 const AuthorList = ({onChange}) =>{
     const {loading, error, data} = useQuery(GET_AUTHORS);
     if(loading) return <option>Loading Authors....</option>

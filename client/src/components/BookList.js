@@ -3,16 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {DropdownButton, Dropdown} from "react-bootstrap";
-
-const GET_BOOKS = gql`
-    {
-        books{
-            name,
-            genre
-        }
-    
-    }
-`;
+import { GET_BOOKS} from "../queries/queries";
 
 const BookList = () =>{
     const { loading, error, data } = useQuery(GET_BOOKS);

@@ -11,12 +11,10 @@ const AddBook = () =>{
     });
     const handleFormSubmit = e =>{
         e.preventDefault();
-        console.log(formState)
     }
     const handleChange = e =>{
 
         const {name, value} = e.target;
-        console.log(name,value)
       setFormState(Object.assign({}, formState, {[name]: value}));
     };
     return (
