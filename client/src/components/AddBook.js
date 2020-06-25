@@ -11,11 +11,12 @@ const AddBook = () =>{
     });
     const handleFormSubmit = e =>{
         e.preventDefault();
-        console.log("Enviando form");
+        console.log(formState)
     }
     const handleChange = e =>{
-      console.log("evente");
-      const {name, value} = e.target;
+
+        const {name, value} = e.target;
+        console.log(name,value)
       setFormState(Object.assign({}, formState, {[name]: value}));
     };
     return (
@@ -32,7 +33,8 @@ const AddBook = () =>{
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Author:</Form.Label>
-                    <AuthorList/>
+
+                    <AuthorList onChange={handleChange}/>
                 </Form.Group>
                 <Button variant="primary" type="submit">
                     Submit

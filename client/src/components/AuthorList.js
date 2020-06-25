@@ -6,30 +6,33 @@ import {Form,Dropdown} from "react-bootstrap";
 const GET_AUTHORS= gql`
     {
         authors{
+            id,
             name,
             age
         }
     }
 `;
-const AuthorList = () =>{
-    const [state , setState] = useState("");
-
+const AuthorList = ({onChange}) =>{
     const {loading, error, data} = useQuery(GET_AUTHORS);
     if(loading) return <option>Loading Authors....</option>
     if(error) return <p>Error x.X</p>
+
+    function  handleChange(e){
+       onChange(e)
+
+    }
     return(
         <div className="authorList">
             <Form.Control
                 as="select"
-                id="inlineFormCustomSelect"
-                custom
-                onChange={e => setState(e.target.value)}
+                name="authorName"
+                onChange={handleChange}
             >
                 {
-                    data.authors.map((author,id) =>{
-                        const {name} = author;
+                    data.authors.map((author,i) =>{
+                        const {name,id} = author;
                         return(
-                            <option key={id} value={name}>
+                            <option name="authorName" key={i} value={id}>
                                 {name}
                             </option>
                         )
